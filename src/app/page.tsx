@@ -36,13 +36,13 @@ export default async function Home() {
           <span className="text-orange bg-orange/20 px-4 py-2 rounded-full text-sm">
             An AI powered sales assistant chatbot
           </span>
-          {/* <Image
+          <Image
             src="/images/corinna-ai-logo.png"
             width={500}
             height={100}
             alt="Logo"
             className="max-w-lg object-contain"
-          /> */}
+          />
           <p className="text-center max-w-[500px]">
             Your AI powered sales assistant! Embed MailGenie to any website
             with just a snippet of code!
@@ -51,7 +51,7 @@ export default async function Home() {
             Start For Free
           </Button>
           <Image
-            src="/images/iphonecorinna.png"
+            src="/images/iphone.png"
             width={400}
             height={100}
             alt="Logo"
@@ -124,11 +124,11 @@ export default async function Home() {
             >
               <Card className="flex flex-col gap-2 rounded-xl overflow-hidden h-full hover:bg-gray-100">
                 <div className="relative w-full aspect-video">
-                  {/* <Image
+                  <Image
                     src={`${process.env.CLOUDWAYS_UPLOADS_URL}${post.image}`}
                     alt="post featured image"
                     fill
-                  /> */}
+                  />
                 </div>
                 <div className="py-5 px-10 flex flex-col gap-5">
                   <CardDescription>
