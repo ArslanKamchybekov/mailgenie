@@ -10,12 +10,12 @@ export type UserRegistrationProps = {
   otp: string
 }
 
-export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
+export const UserRegistrationSchema: ZodType<Partial<UserRegistrationProps>> = z
   .object({
     type: z.string().min(1),
     fullname: z
       .string()
-      .min(4, { message: 'your full name must be atleast 4 characters long' }),
+      .min(4, { message: 'Your full name must be atleast 4 characters long' }),
     email: z.string().email({ message: 'Incorrect email format' }),
     confirmEmail: z.string().email(),
     password: z
@@ -26,13 +26,13 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
       })
       .refine(
         (value) => /^[a-zA-Z0-9_.-]*$/.test(value ?? ''),
-        'password should contain only alphabets and numbers'
+        'Password should contain only alphabets and numbers'
       ),
     confirmPassword: z.string(),
     otp: z.string().min(6, { message: 'You must enter a 6 digit code' }),
   })
   .refine((schema) => schema.password === schema.confirmPassword, {
-    message: 'passwords do not match',
+    message: 'Passwords do not match',
     path: ['confirmPassword'],
   })
   .refine((schema) => schema.email === schema.confirmEmail, {
@@ -46,11 +46,11 @@ export type UserLoginProps = {
 }
 
 export type ChangePasswordProps = {
-  password: string
-  confirmPassword: string
+  password?: string
+  confirmPassword?: string
 }
 
-export const UserLoginSchema: ZodType<UserLoginProps> = z.object({
+export const UserLoginSchema = z.object({
   email: z.string().email({ message: 'You did not enter a valid email' }),
   password: z
     .string()
@@ -58,7 +58,7 @@ export const UserLoginSchema: ZodType<UserLoginProps> = z.object({
     .max(64, {
       message: 'Your password can not be longer then 64 characters long',
     }),
-})
+}) as z.ZodType<UserLoginProps>
 
 export const ChangePasswordSchema: ZodType<ChangePasswordProps> = z
   .object({
@@ -70,11 +70,11 @@ export const ChangePasswordSchema: ZodType<ChangePasswordProps> = z
       })
       .refine(
         (value) => /^[a-zA-Z0-9_.-]*$/.test(value ?? ''),
-        'password should contain only alphabets and numbers'
+        'Password should contain only alphabets and numbers'
       ),
     confirmPassword: z.string(),
   })
   .refine((schema) => schema.password === schema.confirmPassword, {
-    message: 'passwords do not match',
+    message: 'Passwords do not match',
     path: ['confirmPassword'],
   })

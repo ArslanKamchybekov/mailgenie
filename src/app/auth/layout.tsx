@@ -15,15 +15,25 @@ const Layout = async ({ children }: Props) => {
   return (
     <div className="h-screen flex w-full justify-center">
       <div className="w-[600px] ld:w-full flex flex-col items-start p-6">
-        <span className="text-iridium text-2xl font-bold">MailGenie</span>
+        <Image
+          src="/images/logo.png"
+          alt="LOGO"
+          sizes="100vw"
+          style={{
+            width: '20%',
+            height: 'auto',
+          }}
+          width={0}
+          height={0}
+        />
         {children}
       </div>
       <div className="hidden lg:flex flex-1 w-full max-h-full max-w-4000px overflow-hidden relative bg-cream  flex-col pt-10 pl-24 gap-3">
         <h2 className="text-gravel md:text-4xl font-bold">
-          Hi, I am your AI powered Sales Assistant, MailGenie!
+          Hi, I&apos;m your AI powered sales assistant, MailGenie!
         </h2>
         <p className="text-iridium md:text-sm mb-10">
-            MailGenie is capable of capturing lead information without a form...{' '}
+          Corinna is capable of capturing lead information without a form...{' '}
           <br />
           something never done before 😉
         </p>
