@@ -16,12 +16,11 @@ function NavBar() {
           width={0}
           height={0}
         /> */}
-        <p className="text-2xl font-bold text-orange">MailGenie</p>
+        <p className='text-2xl text-gravel'>MailGenie</p>
       </div>
       <ul className="gap-5 justify-between self-stretch my-auto text-sm leading-5 text-neutral-700 max-md:flex-wrap max-md:max-w-full font-normal hidden md:flex">
         <li>Home</li>
         <li>Pricing</li>
-        <li>News Room</li>
         <li>Features</li>
         <li>Contact us</li>
       </ul>

@@ -10,9 +10,7 @@ import Image from 'next/image'
 
 const BillingSettings = async () => {
   const plan = await onGetSubscriptionPlan()
-  const planFeatures = pricingCards.find(
-    (card) => card.title.toUpperCase() === plan?.toUpperCase()
-  )?.features
+  const planFeatures = pricingCards.find((card) => card.title.toUpperCase() === plan?.toUpperCase())?.features
   if (!planFeatures) return
 
   console.log(planFeatures)
