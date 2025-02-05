@@ -16,7 +16,7 @@ const BreadCrumb = () => {
     realtime,
   } = useSideBar()
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col mt-2">
       <div className="flex gap-5 items-center">
         <h2 className="text-3xl font-bold capitalize">{page}</h2>
         {page === 'conversation' && chatRoom && (

@@ -2,7 +2,7 @@ import { useDomain } from '@/hooks/sidebar/use-domain'
 import { cn } from '@/lib/utils'
 import React from 'react'
 import AppDrawer from '../drawer'
-import { Plus } from 'lucide-react'
+import { PlusCircle } from 'lucide-react'
 import { Loader } from '../loader'
 import FormGenerator from '../forms/form-generator'
 import UploadButton from '../upload-button'
@@ -30,12 +30,10 @@ const DomainMenu = ({ domains, min }: Props) => {
       <div className="flex justify-between w-full items-center">
         {!min && <p className="text-xs text-gray-500">DOMAINS</p>}
         <AppDrawer
-          description="add in your domain address to integrate your chatbot"
+          description="Add your domain address to integrate your chatbot"
           title="Add your business domain"
           onOpen={
-            <div className="cursor-pointer text-gray-500 rounded-full border-2">
-              <Plus />
-            </div>
+            <PlusCircle className="cursor-pointer text-ironside" size={25} />
           }
         >
           <Loader loading={loading}>

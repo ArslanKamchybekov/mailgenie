@@ -38,7 +38,7 @@ const ChangePassword = () => {
             type="text"
             inputType="input"
           />
-          <Button className="bg-grandis text-gray-700 font-semibold">
+          <Button className="bg-grandis text-gray-500 font-semibold">
             <Loader loading={loading}>Change Password</Loader>
           </Button>
         </div>
