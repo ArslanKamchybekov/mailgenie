@@ -1,4 +1,5 @@
 'use client'
+import { Spinner } from '@/components/spinner'
 import { Button } from '@/components/ui/button'
 import { useAuthContextHook } from '@/context/use-auth-context'
 import { useSignUpForm } from '@/hooks/sign-up/use-sign-up'
@@ -9,7 +10,7 @@ import { useFormContext } from 'react-hook-form'
 const ButtonHandler = () => {
   const { setCurrentStep, currentStep } = useAuthContextHook()
   const { formState, getFieldState, getValues } = useFormContext()
-  const { onGenerateOTP } = useSignUpForm()
+  const { onGenerateOTP, loading } = useSignUpForm()
 
   const { isDirty: isName } = getFieldState('fullname', formState)
   const { isDirty: isEmail } = getFieldState('email', formState)
@@ -54,7 +55,7 @@ const ButtonHandler = () => {
                 ),
             })}
         >
-          Continue
+          {loading ? <Spinner noPadding /> : 'Continue'}
         </Button>
         <p>
           Already have an account?{' '}
@@ -76,7 +77,7 @@ const ButtonHandler = () => {
         className="w-full"
         onClick={() => setCurrentStep((prev: number) => prev + 1)}
       >
-        Continue
+        {loading ? <Spinner noPadding /> : 'Continue'}
       </Button>
       <p>
         Already have an account?{' '}
