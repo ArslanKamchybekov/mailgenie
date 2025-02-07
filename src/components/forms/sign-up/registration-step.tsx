@@ -8,12 +8,12 @@ import { Spinner } from '@/components/spinner'
 
 const DetailForm = dynamic(() => import('./account-details-form'), {
   ssr: false,
-  loading: () => <Spinner />, // CHANGE
+  loading: () => <Spinner />,
 })
 
 const OTPForm = dynamic(() => import('./otp-form'), {
   ssr: false,
-  loading: () => <Spinner />, // CHANGE
+  loading: () => <Spinner />,
 })
 
 const RegistrationFormStep = () => {

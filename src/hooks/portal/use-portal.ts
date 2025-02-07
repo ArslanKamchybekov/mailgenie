@@ -1,10 +1,9 @@
 import {
   onBookNewAppointment,
-  onDomainCustomerResponses,
   saveAnswers,
 } from '@/actions/appointment'
 import { useToast } from '@/hooks/use-toast'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const usePortal = (

@@ -55,7 +55,7 @@ const ButtonHandler = () => {
                 ),
             })}
         >
-          {loading ? <Spinner noPadding /> : 'Continue'}
+          {loading ? 'Loading...' : 'Continue'}
         </Button>
         <p>
           Already have an account?{' '}

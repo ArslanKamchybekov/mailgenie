@@ -16,7 +16,7 @@ import { TransactionsIcon } from '@/icons/transactions-icon'
 import { DollarSign } from 'lucide-react'
 import React from 'react'
 
-const Page = async () => {
+const DashboardPage = async () => {
   const clients = await getUserClients()
   const sales = await getUserBalance()
   const bookings = await getUserAppointments()
@@ -97,4 +97,4 @@ const Page = async () => {
   )
 }
 
-export default Page
+export default DashboardPage

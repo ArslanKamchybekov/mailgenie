@@ -1,13 +1,29 @@
+'use client'
+
 import NavBar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { pricingCards } from "@/constants/landing-page"
 import clsx from "clsx"
-import { Check, ArrowRight, Star } from "lucide-react"
+import { Check, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useUser } from "@clerk/nextjs"
+import AutoplayVideo from "@/components/demo-video"
 
-export default async function Home() {
+const Home = () => {
+  const router = useRouter()
+  const user = useUser()
+
+  const handleStartForFree = () => {
+    if (user) {
+      router.push('/dashboard')
+    } else {
+      router.push('/auth/signin')
+    }
+  }
+
   return (
     <main className="min-h-screen flex flex-col">
       <NavBar />
@@ -28,10 +44,13 @@ export default async function Home() {
                 your conversions soar.
               </p>
               <div className="flex gap-4 animate-fade-in-delay-2">
-                <Button className="bg-orange hover:bg-orange text-white px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105">
+                <Button className="bg-orange hover:bg-orange text-white px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105"
+                onClick={handleStartForFree}
+                >
                   Start For Free
                 </Button>
                 <Button variant="outline" className="border-gray-300 px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105"
+                onClick={() => router.push('/demo')}
                 >
                   Watch Demo <ArrowRight className="ml-2" />
                 </Button>
@@ -86,6 +105,27 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Demo Video */}
+      <div className="container mx-auto py-8">
+        <h1 className="text-3xl font-bold mb-10 text-center">Experience Our App</h1>
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+          <div className="lg:w-1/2 space-y-4">
+            <h2 className="text-2xl font-semibold">Experience Our App</h2>
+            <p className="text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed
+              erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+            </p>
+            <p className="text-gray-600">
+              Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum
+              feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.
+            </p>
+          </div>
+          <div className="lg:w-1/2">
+            <AutoplayVideo src="/app-demo.mp4" className="w-full max-w-3xl mx-auto" />
+          </div>
+        </div>
+      </div>
 
       {/* Pricing Section */}
       <section className="py-20 bg-gray-50">
@@ -217,3 +257,4 @@ export default async function Home() {
   )
 }
 
+export default Home

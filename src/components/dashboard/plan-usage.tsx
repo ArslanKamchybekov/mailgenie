@@ -14,7 +14,6 @@ export const PlanUsage = ({
   domains,
   clients,
 }: PlanUsageProps) => {
-  console.log(credits)
   return (
     <div className="flex flex-col gap-5 py-5">
       <ProgressBar

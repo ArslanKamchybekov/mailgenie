@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "4.29.12",
+    "@clerk/nextjs": "^6.11.1",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.10.0",
-    "@prisma/client": "^6.3.0",
+    "@prisma/client": "^6.3.1",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.5",
     "@radix-ui/react-aspect-ratio": "^1.1.1",
@@ -56,6 +56,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
+    "next-auth": "5.0.0-beta.25",
     "next-themes": "^0.4.4",
     "nodemailer": "^6.10.0",
     "openai": "^4.82.0",
@@ -69,6 +70,7 @@
     "recharts": "^2.15.1",
     "sonner": "^1.7.4",
     "stripe": "^17.6.0",
+    "svix": "^1.45.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",

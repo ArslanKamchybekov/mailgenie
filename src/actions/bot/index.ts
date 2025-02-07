@@ -3,7 +3,7 @@
 import { client } from '@/lib/prisma'
 import { extractEmailsFromString, extractURLfromString } from '@/lib/utils'
 import { onRealTimeChat } from '../conversation'
-import { clerkClient } from '@clerk/nextjs'
+import { clerkClient } from '@clerk/nextjs/server'
 import { onMailer } from '../mailer'
 import OpenAi from 'openai'
 
@@ -170,9 +170,9 @@ export const onAiChatBotAssistant = async (
           )
 
           if (!checkCustomer.customer[0].chatRoom[0].mailed) {
-            const user = await clerkClient.users.getUser(
+            const user = await clerkClient[0].users.getUser(
               checkCustomer.User?.clerkId!
-            )
+            )            
 
             onMailer(user.emailAddresses[0].emailAddress)
 
