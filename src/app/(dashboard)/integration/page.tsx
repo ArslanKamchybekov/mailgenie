@@ -18,3 +18,4 @@ const IntegrationsPage = async () => {
 }
 
 export default IntegrationsPage
+export const dynamic = 'force-dynamic'
