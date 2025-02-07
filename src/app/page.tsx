@@ -10,7 +10,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useUser } from "@clerk/nextjs"
-import AutoplayVideo from "@/components/demo-video"
+import { VideoPlayer } from "@/components/videoplayer"
+
 
 const Home = () => {
   const router = useRouter()
@@ -107,23 +108,10 @@ const Home = () => {
       </section>
 
       {/* Demo Video */}
-      <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold mb-10 text-center">Experience Our App</h1>
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
-          <div className="lg:w-1/2 space-y-4">
-            <h2 className="text-2xl font-semibold">Experience Our App</h2>
-            <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed
-              erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-            </p>
-            <p className="text-gray-600">
-              Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum
-              feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.
-            </p>
-          </div>
-          <div className="lg:w-1/2">
-            <AutoplayVideo src="/app-demo.mp4" className="w-full max-w-3xl mx-auto" />
-          </div>
+      <div className="container mx-auto px-4 py-20">
+        <h1 className="text-4xl font-bold text-center mb-12">Watch MailGenie in Action</h1>
+        <div className="max-w-3xl mx-auto rounded-lg overflow-hidden shadow-lg">
+          <VideoPlayer videoSrc="https://utfs.io/f/08b0a37f-afd7-4623-b5cc-e85184528fce-1f02.mp4" />
         </div>
       </div>
 

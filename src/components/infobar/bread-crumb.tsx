@@ -7,12 +7,9 @@ import { Switch } from '../ui/switch'
 const BreadCrumb = () => {
   const {
     chatRoom,
-    expand,
     loading,
     onActivateRealtime,
-    onExpand,
     page,
-    onSignOut,
     realtime,
   } = useSideBar()
   return (

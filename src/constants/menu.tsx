@@ -83,8 +83,8 @@ export const HELP_DESK_TABS_MENU: TABS_MENU_PROPS[] = [
 
 export const APPOINTMENT_TABLE_HEADER = [
   'Name',
-  'RequestedTime',
-  'Added Time',
+  'Requested time',
+  'Added time',
   'Domain',
 ]
 

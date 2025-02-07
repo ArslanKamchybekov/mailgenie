@@ -1,6 +1,5 @@
 import { SIDE_BAR_MENU } from '@/constants/menu'
 import { LogOut, Menu, MonitorSmartphone } from 'lucide-react'
-import Image from 'next/image'
 import React from 'react'
 import DomainMenu from './domain-menu'
 import MenuItem from './menu-item'
@@ -35,7 +34,11 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
           width={0}
           height={0}
         /> */}
-        <p className='text-2xl font-bold text-gravel'>MailGenie</p>
+        <p className='text-2xl font-bold text-gravel'
+          onClick={() => window.location.href = '/'}
+        >
+          MailGenie
+        </p>
         <Menu
           className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards"
           onClick={onExpand}

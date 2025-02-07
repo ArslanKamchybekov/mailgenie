@@ -33,7 +33,7 @@ const AppointmentPage = async () => {
         <div className="lg:col-span-2 overflow-y-auto">
           <AllAppointments bookings={domainBookings?.bookings} />
         </div>
-        <div className="col-span-1">
+        <div className="col-span-1 pt-2">
           <Section
             label="Bookings For Today"
             message="All your bookings for today are mentioned below."
@@ -74,8 +74,8 @@ const AppointmentPage = async () => {
               </Card>
             ))
           ) : (
-            <div className="w-full flex justify-center">
-              <p>No Appointments For Today</p>
+            <div className="w-full flex justify-center mt-4">
+              <p className='text-sm text-gray-500'>No Appointments For Today</p>
             </div>
           )}
         </div>
