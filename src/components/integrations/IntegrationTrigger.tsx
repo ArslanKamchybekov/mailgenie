@@ -7,7 +7,6 @@ import { IntegrationModalBody } from './integration-modal-body'
 
 type Props = {
   name: 'stripe'
-  logo: string
   title: string
   descrioption: string
   connections: {
@@ -17,7 +16,6 @@ type Props = {
 
 const IntegrationTrigger = ({
   name,
-  logo,
   title,
   descrioption,
   connections,
@@ -26,7 +24,6 @@ const IntegrationTrigger = ({
     <Modal
       title={title}
       type="Integration"
-      logo={logo}
       description={descrioption}
       trigger={
         <Card className="px-3 py-2 cursor-pointer flex gap-2">

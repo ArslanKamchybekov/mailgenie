@@ -25,7 +25,6 @@ const Modal = ({
   title,
   description,
   type,
-  logo,
 }: Props) => {
   switch (type) {
     case 'Integration':
@@ -34,7 +33,7 @@ const Modal = ({
           <DialogTrigger asChild>{trigger}</DialogTrigger>
           <DialogContent>
             <div className="flex justify-center gap-3">
-              <div className="w-12 h-12 relative">
+              {/* <div className="w-12 h-12 relative">
                 <Image
                   src={`https://ucarecdn.com/2c9bd4ab-1f00-41df-bad2-df668f65a232/`}
                   fill
@@ -51,7 +50,7 @@ const Modal = ({
                   fill
                   alt="Stripe"
                 />
-              </div>
+              </div> */}
             </div>
             <DialogHeader className="flex items-center">
               <DialogTitle className="text-xl">{title}</DialogTitle>
