@@ -5,7 +5,6 @@ import BreadCrumb from './bread-crumb'
 import { UserButton, useUser } from '@clerk/nextjs'
 
 const InfoBar = () => {
-  const user = useUser()  
   return (
     <div className="flex w-full justify-between items-center p-2 mb-8">
       <BreadCrumb />

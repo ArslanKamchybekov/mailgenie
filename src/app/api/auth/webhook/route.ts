@@ -5,38 +5,32 @@ import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 
 export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
-  if (!WEBHOOK_SECRET) {
-    throw new Error(
-      "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
-    );
+  if (!WEBHOOK_SECRET || typeof WEBHOOK_SECRET !== "string") {
+    throw new Error("Please add a valid CLERK_WEBHOOK_SECRET in .env");
   }
 
-  // Get the headers
   const headerPayload = await headers();
   const svix_id = headerPayload.get("svix-id");
   const svix_timestamp = headerPayload.get("svix-timestamp");
   const svix_signature = headerPayload.get("svix-signature");
 
-  // If there are no headers, error out
   if (!svix_id || !svix_timestamp || !svix_signature) {
-    return new Response("Error occured -- no svix headers", {
-      status: 400,
-    });
+    return NextResponse.json(
+      { error: "Missing Svix headers" },
+      { status: 400 }
+    );
   }
 
-  // Get the body
   const payload = await req.json();
-  const body = JSON.stringify(payload);
+  console.log("Received payload:", JSON.stringify(payload, null, 2));
 
-  // Create a new SVIX instance with your secret.
+  const body = JSON.stringify(payload);
   const wh = new Webhook(WEBHOOK_SECRET);
 
   let evt: WebhookEvent;
 
-  // Verify the payload with the headers
   try {
     evt = wh.verify(body, {
       "svix-id": svix_id,
@@ -45,36 +39,36 @@ export async function POST(req: Request) {
     }) as WebhookEvent;
   } catch (err) {
     console.error("Error verifying webhook:", err);
-    return new Response("Error occured", {
-      status: 400,
-    });
+    return NextResponse.json(
+      { error: "Invalid webhook signature" },
+      { status: 400 }
+    );
   }
 
-  const eventType = evt.type;
+  if (evt.type === "user.created") {
+    try {
+      console.log("Processing user.created event...");
+      await onCompleteUserRegistration(
+        `${payload?.data?.first_name ?? ""} ${payload?.data?.last_name ?? ""}`,
+        payload?.data?.id,
+        "user"
+      );
 
-  switch (eventType) {
-    case "user.created":
-      try {
-        console.log(payload);
-        await onCompleteUserRegistration(
-            payload?.data?.first_name + " " + payload?.data?.last_name,
-            payload?.data?.id,
-            "user"
-        );
-
-        return NextResponse.json({
-          status: 200,
-          message: "User info inserted",
-        });
-      } catch (error: any) {
-        return NextResponse.json({
-          status: 400,
-          message: error.message,
-        });
+      return NextResponse.json(
+        { message: "User info inserted successfully" },
+        { status: 200 }
+      );
+    } catch (error: any) {
+      console.error("Error handling user.created:", error);
+      return NextResponse.json(
+        { error: error.message },
+        { status: 500 }
+      );
     }
-    default:
-      return new Response("Error occured -- unhandeled event type", {
-        status: 400,
-      });
   }
+
+  return NextResponse.json(
+    { error: "Unhandled event type" },
+    { status: 400 }
+  );
 }

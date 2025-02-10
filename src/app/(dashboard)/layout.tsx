@@ -9,7 +9,6 @@ type Props = {
 
 const OwnerLayout = async ({ children }: Props) => {
   const authenticated = await onLoginUser()
-  console.log(authenticated)
 
   return (
     <ChatProvider>
