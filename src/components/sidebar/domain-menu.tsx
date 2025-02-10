@@ -25,6 +25,8 @@ type Props = {
 const DomainMenu = ({ domains, min }: Props) => {
   const { register, onAddDomain, loading, errors, isDomain } = useDomain()
 
+  console.log(domains)
+
   return (
     <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
       <div className="flex justify-between w-full items-center">

@@ -66,7 +66,7 @@ const EmailMarketing = ({ campaign, domains, subscription }: Props) => {
         id={isId}
       />
       <div>
-        <div className="flex gap-3 justify-end">
+        <div className="flex gap-3 justify-end mx-4">
           <Button
             disabled={isSelected.length == 0}
             onClick={onAddCustomersToCampaign}
@@ -79,7 +79,7 @@ const EmailMarketing = ({ campaign, domains, subscription }: Props) => {
             trigger={
               <Card className="flex gap-2 items-center px-3 cursor-pointer text-sm">
                 <Loader loading={false}>
-                  <Plus /> Create Campaign
+                  <Plus /> Create campaign
                 </Loader>
               </Card>
             }
