@@ -21,7 +21,7 @@ const ConversationSearch = ({ register, domains }: Props) => {
       >
         <option
           disabled
-          selected
+          defaultValue={0}
         >
           Domain name
         </option>
