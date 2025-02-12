@@ -71,4 +71,6 @@ export async function POST(req: Request) {
     { error: "Unhandled event type" },
     { status: 400 }
   );
+  
+  return NextResponse.json(200)
 }
