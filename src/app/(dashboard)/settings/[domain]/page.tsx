@@ -6,10 +6,15 @@ import ProductTable from '@/components/products'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
-type Props = { params: { domain: string } }
+interface PageProps {
+  params: Promise<{
+    domain: string
+  }>
+}
 
-const DomainSettingsPage = async ({ params }: Props) => {
-  const domain = await onGetCurrentDomainInfo(params.domain)
+
+const DomainSettingsPage = async ({ params }: PageProps) => {
+  const domain = await onGetCurrentDomainInfo((await params).domain)
   if (!domain) redirect('/dashboard')
 
   return (
