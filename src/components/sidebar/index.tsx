@@ -2,8 +2,8 @@
 import useSideBar from '@/context/use-sidebar'
 import { cn } from '@/lib/utils'
 import React from 'react'
-import MaxMenu from './maximized-menu'
-import { MinMenu } from './minimized-menu'
+import MaxMenu from './max-menu'
+import MinMenu from './min-menu'
 
 type Props = {
   domains:

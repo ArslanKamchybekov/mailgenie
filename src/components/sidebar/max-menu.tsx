@@ -22,18 +22,6 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
   return (
     <div className="py-3 px-4 flex flex-col h-full">
       <div className="flex justify-between items-center">
-        {/* <Image
-          src="/images/logo.png"
-          alt="LOGO"
-          sizes="100vw"
-          className="animate-fade-in opacity-0 delay-300 fill-mode-forwards"
-          style={{
-            width: '50%',
-            height: 'auto',
-          }}
-          width={0}
-          height={0}
-        /> */}
         <p className='text-2xl font-bold text-gravel'
           onClick={() => window.location.href = '/'}
         >

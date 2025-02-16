@@ -19,7 +19,7 @@ type MinMenuProps = {
     | undefined
 }
 
-export const MinMenu = ({
+const MinMenu = ({
   onShrink,
   current,
   onSignOut,
@@ -62,3 +62,5 @@ export const MinMenu = ({
     </div>
   )
 }
+
+export default MinMenu
