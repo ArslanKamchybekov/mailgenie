@@ -5,13 +5,34 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { pricingCards } from "@/constants/landing-page"
 import clsx from "clsx"
-import { Check, ArrowRight } from "lucide-react"
-import Image from "next/image"
+import { Check, ArrowRight, Sparkles } from "lucide-react"
+import Phone from "@/components/landing-page/phone"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useUser } from "@clerk/nextjs"
 import { VideoPlayer } from "@/components/videoplayer"
+import { motion } from "framer-motion"
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
 
 const Home = () => {
   const router = useRouter()
@@ -30,43 +51,49 @@ const Home = () => {
       <NavBar />
 
       {/* Hero Section */}
-      <section className="flex-1 flex items-center justify-center bg-gradient-to-b from-orange-50 to-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="flex-1 max-w-2xl space-y-8">
-              <span className="text-orange bg-orange/20 px-4 py-2 rounded-full text-sm animate-fade-in">
-                An AI powered sales assistant chatbot
-              </span>
-              <h1 className="text-5xl font-bold mb-6 animate-fade-in">
-                Supercharge Your Sales with <span className="text-orange">MailGenie</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in-delay-1">
-                Your AI-powered sales assistant! Embed MailGenie to any website with just a snippet of code and watch
-                your conversions soar.
-              </p>
-              <div className="flex gap-4 animate-fade-in-delay-2">
-                <Button className="bg-orange hover:bg-orange text-white px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105"
+      <motion.section
+      className="flex-1 flex items-center justify-center bg-gradient-to-b from-amber-50 to-gray-50 py-20"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <motion.div className="flex-1 max-w-2xl space-y-8" variants={containerVariants}>
+            <motion.span
+              className="text-orange bg-orange/20 px-4 py-2 rounded-full text-sm inline-block"
+              variants={itemVariants}
+            >
+              <Sparkles className="w-5 h-5 inline-block mr-2" />
+              AI powered sales assistant chatbot
+            </motion.span>
+            <motion.h1 className="text-5xl font-bold mb-6" variants={itemVariants}>
+              Supercharge Your Sales with <span className="text-orange">MailGenie</span>
+            </motion.h1>
+            <motion.p className="text-xl text-gray-600 mb-8" variants={itemVariants}>
+              Your AI-powered sales assistant! Embed MailGenie to any website with just a snippet of code and watch your
+              conversions soar.
+            </motion.p>
+            <motion.div className="flex gap-4" variants={itemVariants}>
+              <Button
+                className="bg-orange hover:bg-orange text-white px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105"
                 onClick={handleStartForFree}
-                >
-                  Start For Free
-                </Button>
-                <Button variant="outline" className="border-gray-300 px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105"
-                onClick={() => router.push('/demo')}
-                >
-                  Watch Demo <ArrowRight className="ml-2" />
-                </Button>
-              </div>
-            </div>
-            <Image
-              src="/images/iphone.png"
-              width={400}
-              height={100}
-              alt="image"
-              className="max-w-lg object-contain"
-            />
-          </div>
+              >
+                Start For Free
+              </Button>
+              <Button
+                variant="outline"
+                className="border-gray-300 px-8 py-6 text-lg font-bold transition-all duration-200 ease-in-out transform hover:scale-105"
+                onClick={() => router.push("/demo")}
+              >
+                Watch Demo <ArrowRight className="ml-2" />
+              </Button>
+            </motion.div>
+          </motion.div>
+          <Phone />
         </div>
-      </section>
+      </div>
+    </motion.section>
 
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
