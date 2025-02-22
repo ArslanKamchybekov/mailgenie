@@ -1,5 +1,5 @@
 import { SIDE_BAR_MENU } from '@/constants/menu'
-import { LogOut, Menu, MonitorSmartphone } from 'lucide-react'
+import { LogOut, Menu } from 'lucide-react'
 import React from 'react'
 import DomainMenu from './domain-menu'
 import MenuItem from './menu-item'
@@ -53,11 +53,6 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
             icon={<LogOut />}
             onSignOut={onSignOut}
           />
-          {/* <MenuItem
-            size="max"
-            label="Mobile App"
-            icon={<MonitorSmartphone />}
-          /> */}
         </div>
       </div>
     </div>
