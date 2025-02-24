@@ -2,6 +2,8 @@ import { onLoginUser } from '@/actions/auth'
 import SideBar from '@/components/sidebar'
 import { ChatProvider } from '@/context/use-chat-context'
 import React from 'react'
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { AppSidebar } from '@/components/app-sidebar'
 
 type Props = {
   children: React.ReactNode
@@ -12,14 +14,18 @@ const OwnerLayout = async ({ children }: Props) => {
   if (!authenticated) return null
 
   return (
-    <ChatProvider>
-      <div className="flex h-screen w-full">
-        <SideBar domains={authenticated.domain} />
-        <div className="w-full h-screen flex flex-col pl-20 md:pl-4">
-          {children}
+    <SidebarProvider>
+      <ChatProvider>
+        <div className="flex h-screen w-full">
+          <AppSidebar />
+          {/* <SideBar domains={authenticated.domain} /> */}
+          <SidebarTrigger />
+          <div className="w-full h-screen flex flex-col pl-20 md:pl-4">
+            {children}
+          </div>
         </div>
-      </div>
-    </ChatProvider>
+      </ChatProvider>
+    </SidebarProvider>
   )
 }
 

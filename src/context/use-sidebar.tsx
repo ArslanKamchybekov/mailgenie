@@ -50,6 +50,7 @@ const useSideBar = () => {
   }, [chatRoom])
 
   const page = pathname.split('/').pop()
+  
   const { signOut } = useClerk()
 
   const onSignOut = () => signOut(() => router.push('/'))
