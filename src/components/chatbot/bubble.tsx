@@ -1,7 +1,6 @@
 import React from 'react'
-import { cn, extractUUIDFromString, getMonthName } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { User } from 'lucide-react'
+import { cn, extractUUIDFromString } from '@/lib/utils'
+import { Bot, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -27,19 +26,9 @@ const Bubble = ({ message, createdAt }: Props) => {
       )}
     >
       {message.role == 'assistant' ? (
-        <Avatar className="w-5 h-5">
-          <AvatarImage
-            src="https://github.com/shadcn.png"
-            alt="@shadcn"
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <Bot className="w-5 h-5" />
       ) : (
-        <Avatar className="w-5 h-5">
-          <AvatarFallback>
-            <User />
-          </AvatarFallback>
-        </Avatar>
+        <User className="w-5 h-5" />
       )}
       <div
         className={cn(
@@ -49,23 +38,6 @@ const Bubble = ({ message, createdAt }: Props) => {
             : 'bg-grandis rounded-l-md'
         )}
       >
-        {createdAt ? (
-          <div className="flex gap-2 text-xs text-gray-600">
-            <p>
-              {createdAt.getDate()} {getMonthName(createdAt.getMonth())}
-            </p>
-            <p>
-              {createdAt.getHours()}:{createdAt.getMinutes()}
-              {createdAt.getHours() > 12 ? 'PM' : 'AM'}
-            </p>
-          </div>
-        ) : (
-          <p className="text-xs">
-            {`${d.getHours()}:${d.getMinutes()} ${
-              d.getHours() > 12 ? 'pm' : 'am'
-            }`}
-          </p>
-        )}
         {image ? (
           <div className="relative aspect-square">
             <Image

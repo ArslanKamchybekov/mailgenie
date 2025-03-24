@@ -2,7 +2,7 @@
 
 import React from 'react'
 import BreadCrumb from './bread-crumb'
-import { UserButton, useUser } from '@clerk/nextjs'
+import { UserButton } from '@clerk/nextjs'
 
 const InfoBar = () => {
   return (

@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Sidebar,
   SidebarContent,
@@ -10,13 +12,25 @@ import {
 } from "@/components/ui/sidebar"
 import { SIDE_BAR_MENU } from '@/constants/menu'
 import React from "react"
+import DomainMenu from "../sidebar/domain-menu"
 
-export function AppSidebar() {
+interface AppSidebarProps {
+    domains:
+    | {
+        id: string
+        name: string
+        icon: string | null
+      }[]
+    | null
+    | undefined
+}   
+
+export function AppSidebar({ domains }: AppSidebarProps) {
   return (
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>MailGenie</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {SIDE_BAR_MENU.map((item) => (
@@ -30,6 +44,7 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+            <DomainMenu domains={domains} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

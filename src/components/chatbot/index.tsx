@@ -54,6 +54,7 @@ const AiChatBot = () => {
             src={`https://ucarecdn.com/${currentBot.chatBot.icon}/`}
             alt="bot"
             fill
+            className='rounded-full'
           />
         ) : (
           <BotIcon />

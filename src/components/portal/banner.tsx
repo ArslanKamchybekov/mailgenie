@@ -1,20 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
 
-export const PortalBanner = () => {
+export const PortalBanner = () => { // mailgenie div no image
   return (
-    <div className="w-full bg-muted flex justify-center py-5">
-      <Image
-        src="/images/logo.png"
-        alt="LOGO"
-        sizes="100vw"
-        style={{
-          width: '100px',
-          height: 'auto',
-        }}
-        width={0}
-        height={0}
-      />
+    <div className="flex justify-center items-center h-16 bg-gray-800 text-white text-2xl font-bold">
+      <p>MailGenie</p>
     </div>
   )
 }

@@ -13,6 +13,11 @@ export default async function CustomerSignUpForm({ params }: Props) {
 
   if (!questions) return null
 
+  console.log('domainid', domainid)
+  console.log('customerid', customerid)
+  console.log('questions', questions)
+  console.log('bookings', bookings)
+
   return (
     <PortalForm
       bookings={bookings}

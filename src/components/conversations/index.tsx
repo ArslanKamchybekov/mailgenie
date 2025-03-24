@@ -21,8 +21,8 @@ type Props = {
 }
 
 const ConversationMenu = ({ domains }: Props) => {
-  const { register, chatRooms, loading, onGetActiveChatMessages } =
-    useConversation()
+  const { register, chatRooms, loading, onGetActiveChatMessages } = useConversation()
+  console.log("chatRooms conversationmenu", chatRooms)
 
   return (
     <div className="m-4">
@@ -47,7 +47,7 @@ const ConversationMenu = ({ domains }: Props) => {
                   />
                 ))
               ) : (
-                <CardDescription>No chats for this domain</CardDescription>
+                <CardDescription>No chats for {domains?.[0].name}</CardDescription>
               )}
             </Loader>
           </div>

@@ -20,7 +20,7 @@ export const useConversation = () => {
     resolver: zodResolver(ConversationSearchSchema),
     mode: 'onChange',
   })
-  const { setLoading: loadMessages, setChats, setChatRoom } = useChatContext()
+  const { setLoading: loadMessages, setChats, setChatRoom, chats } = useChatContext()
   const [chatRooms, setChatRooms] = useState<
     {
       chatRoom: {
@@ -39,8 +39,10 @@ export const useConversation = () => {
   useEffect(() => {
     const search = watch(async (value) => {
       setLoading(true)
+      console.log('value', value)
       try {
         const rooms = await onGetDomainChatRooms(value.domain)
+        console.log('rooms', rooms)
         if (rooms) {
           setLoading(false)
           setChatRooms(rooms.customer)
@@ -65,6 +67,8 @@ export const useConversation = () => {
       console.log(error)
     }
   }
+  console.log("chats hook", chats)
+  console.log('chatRooms hook', chatRooms)
   return {
     register,
     chatRooms,

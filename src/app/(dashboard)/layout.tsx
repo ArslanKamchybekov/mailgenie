@@ -17,7 +17,7 @@ const OwnerLayout = async ({ children }: Props) => {
     <SidebarProvider>
       <ChatProvider>
         <div className="flex h-screen w-full">
-          <AppSidebar />
+          <AppSidebar domains={authenticated.domain} />
           {/* <SideBar domains={authenticated.domain} /> */}
           <SidebarTrigger />
           <div className="w-full h-screen flex flex-col pl-20 md:pl-4">
