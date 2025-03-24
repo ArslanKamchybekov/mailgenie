@@ -67,30 +67,6 @@ const DashboardPage = async () => {
               clients={clients || 0}
             />
           </div>
-          <div className="flex flex-col">
-            <div className="w-full flex justify-between items-start mb-5">
-              <div className="flex gap-3 items-center">
-                <TransactionsIcon />
-                <p className="font-bold">Recent Transactions</p>
-              </div>
-              <p className="text-sm">See more</p>
-            </div>
-            <Separator orientation="horizontal" />
-            {transactions &&
-              transactions.data.map((transaction) => (
-                <div
-                  className="flex gap-3 w-full justify-between items-center border-b-2 py-5"
-                  key={transaction.id}
-                >
-                  <p className="font-bold">
-                    {transaction.calculated_statement_descriptor}
-                  </p>
-                  <p className="font-bold text-xl">
-                    ${transaction.amount / 100}
-                  </p>
-                </div>
-              ))}
-          </div>
         </div>
       </div>
     </>
