@@ -42,7 +42,7 @@ export const EditEmail = ({
           errors={errors}
           inputType="textarea"
           lines={10}
-          placeholder="your email description"
+          placeholder="Your email content"
           type="text"
         />
         <Button>Save</Button>
